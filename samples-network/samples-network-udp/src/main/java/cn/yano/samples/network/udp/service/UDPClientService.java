@@ -37,13 +37,13 @@ public class UDPClientService extends UDPService {
      * @param infoBean 消息
      * @throws IOException
      */
-    public void send(InfoBean infoBean) throws IOException {
+    public void send(InfoBean infoBean, int port) throws IOException {
         // 定义发送数据
         byte[] sendData = SerializeUtil.serialize(infoBean);
         // 获取本地 IP 地址
         InetAddress IPAddress = InetAddress.getLocalHost();
         // 创建发送数据包，并标注源地址#，目的地址#
-        DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, AppConfig.UDP_SERVER_PORT);
+        DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, port);
         // 发送数据
         super.send(sendPacket);
     }

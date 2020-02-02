@@ -21,4 +21,9 @@ public class AppConfig {
      */
     public final static int TCP_SERVER_MAX_CONN_SIZE = 10;
 
+    /**
+     * TCP服务端最大连接队列数
+     */
+    public final static int TCP_SERVER_MAX_QUEUE_SIZE = 5;
+
 }
