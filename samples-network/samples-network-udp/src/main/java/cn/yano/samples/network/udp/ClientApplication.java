@@ -30,7 +30,7 @@ public class ClientApplication {
         UDPClientService clientService = null;
         try {
             clientService = new UDPClientService(AppConfig.UDP_CLIENT_PORT);
-            while (true) {
+            for(;;) {
                 clientService.send(new InfoBean("clientA", "mem is full", System.currentTimeMillis(), MessageLevelEnum.ERROR.getValue()),
                         AppConfig.UDP_SERVER_PORT);
                 clientService.send(new InfoBean("clientB", "mem is high", System.currentTimeMillis(), MessageLevelEnum.WARN.getValue()),

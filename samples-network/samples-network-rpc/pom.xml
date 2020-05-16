@@ -3,48 +3,22 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>cn.yano.samples</groupId>
-    <artifactId>samples-network</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <parent>
+        <groupId>cn.yano.samples</groupId>
+        <artifactId>samples-network</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>samples-network-rpc</artifactId>
+    <packaging>jar</packaging>
 
     <name>${project.artifactId}</name>
-
-    <modules>
-        <module>samples-network-tcp</module>
-        <module>samples-network-udp</module>
-        <module>samples-network-rpc</module>
-    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <slf4j.version>1.7.21</slf4j.version>
-        <commons-lang3.version>3.4</commons-lang3.version>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>fastjson</artifactId>
-            <version>1.2.58</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
     </dependencies>
 
     <build>

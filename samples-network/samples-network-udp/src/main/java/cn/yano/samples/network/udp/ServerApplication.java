@@ -30,7 +30,7 @@ public class ServerApplication {
         UDPServerService serverService = null;
         try {
             serverService = new UDPServerService(AppConfig.UDP_SERVER_PORT);
-            while (true) {
+            for(;;) {
                 InfoBean infoBean = serverService.receive();
                 if (infoBean.getLevel() == MessageLevelEnum.ERROR.getValue()) {
                     logger.warn("client {} occur an error : {}", infoBean.getClient(), infoBean.getMsg());

@@ -32,6 +32,7 @@ public class TCPServerService implements Runnable {
      */
     public TCPServerService(Socket socket) {
         this.socket = socket;
+        logger.info("create task {} process socket {}", Thread.currentThread(), socket.toString());
     }
 
     /**

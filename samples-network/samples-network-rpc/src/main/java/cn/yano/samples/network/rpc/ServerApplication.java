@@ -1,15 +1,22 @@
-package cn.yano.samples.network.tcp;
+package cn.yano.samples.network.rpc;
 
-import cn.yano.samples.network.tcp.config.AppConfig;
-import cn.yano.samples.network.tcp.service.TCPServerService;
+import cn.yano.samples.network.rpc.config.AppConfig;
+import cn.yano.samples.network.rpc.service.TCPServerService;
+import cn.yano.samples.network.rpc.service.UserService;
+import cn.yano.samples.network.rpc.service.impl.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.net.SocketAddress;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -18,11 +25,15 @@ import java.util.concurrent.Executors;
  * Created by xieyangyang0636 on 2020/1/19.
  */
 public class ServerApplication {
-
     /**
      * 日志Logger
      */
     private final static Logger logger = LoggerFactory.getLogger(ServerApplication.class);
+
+    /**
+     * 服务实现类
+     */
+    public static Map<String, Object> serviceImplMap = new HashMap<>();
 
     /**
      * 启动方法
@@ -30,6 +41,8 @@ public class ServerApplication {
      * @param args 入参
      */
     public static void main(String[] args) throws IOException {
+        UserServiceImpl userServiceImpl = new UserServiceImpl();
+        serviceImplMap.put(UserService.class.getName(), userServiceImpl);
         // 服务端模拟线程
         logger.info("start tcp server");
         ServerSocket serverSocket = null;
@@ -45,7 +58,7 @@ public class ServerApplication {
             executorService = Executors.newFixedThreadPool(AppConfig.TCP_SERVER_MAX_CONN_SIZE);
             // 接收客户端连接
             logger.info("server start accept data");
-            for(;;) {
+            for (; ; ) {
                 Socket connectionSocket = serverSocket.accept();
                 TCPServerService serverService = new TCPServerService(connectionSocket);
                 executorService.execute(serverService);
@@ -65,5 +78,4 @@ public class ServerApplication {
             }
         }
     }
-
 }
