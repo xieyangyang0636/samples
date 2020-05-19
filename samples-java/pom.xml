@@ -13,6 +13,7 @@
 
     <modules>
         <module>samples-java-annotation</module>
+        <module>samples-java-jdk</module>
     </modules>
 
     <properties>
