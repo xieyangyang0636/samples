@@ -20,7 +20,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <slf4j.version>1.7.21</slf4j.version>
-        <es.version>2.3.3</es.version>
+        <es.version>6.8.15</es.version>
     </properties>
 
     <dependencies>
